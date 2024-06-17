@@ -16,21 +16,21 @@
   <meta name="author" content="jiayong">
   <meta name="keywords" content="">
   
-    <meta name="description" content="jiayong的博客空间">
+    <meta name="description" content="Windows下Rust环境安装本文档的本意是不希望安装Visual Studio ，这个软件几个G的空间太大了…  首先安装C&#x2F;C++ 环境，这里我们选择MinGW64，MinGW64（Minimalist GNU for Windows 64-bit）是一个在 Windows 操作系统上提供 GNU 工具集的开发环境。它旨在为 Windows 提供一套类Unix的开发工具，包括编译器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="super-resolution">
-<meta property="og:url" content="https://jiayongovo.github.io/2024/06/17/super-resolution/index.html">
+<meta property="og:title" content="想用 Ai 实现一切我想做的事情 jiayongovo">
+<meta property="og:url" content="https://jiayongovo.github.io/2024/06/17/windows%20rust%20%E5%AE%89%E8%A3%85/index.html">
 <meta property="og:site_name" content="想用 Ai 实现一切我想做的事情 jiayongovo">
-<meta property="og:description" content="jiayong的博客空间">
+<meta property="og:description" content="Windows下Rust环境安装本文档的本意是不希望安装Visual Studio ，这个软件几个G的空间太大了…  首先安装C&#x2F;C++ 环境，这里我们选择MinGW64，MinGW64（Minimalist GNU for Windows 64-bit）是一个在 Windows 操作系统上提供 GNU 工具集的开发环境。它旨在为 Windows 提供一套类Unix的开发工具，包括编译器">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-06-17T07:55:11.000Z">
-<meta property="article:modified_time" content="2024-06-17T07:55:11.615Z">
+<meta property="article:published_time" content="2024-06-17T08:53:37.542Z">
+<meta property="article:modified_time" content="2023-12-06T10:49:47.135Z">
 <meta property="article:author" content="jiayong">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>super-resolution - 想用 Ai 实现一切我想做的事情 jiayongovo</title>
+  <title>想用 Ai 实现一切我想做的事情 jiayongovo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="super-resolution"></span>
+            <span id="subtitle" data-typed-text=""></span>
           
         </div>
 
@@ -207,7 +207,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-06-17 15:55" pubdate>
+        <time datetime="2024-06-17 16:53" pubdate>
           2024年6月17日 下午
         </time>
       </span>
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          432 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          1 分钟
+          4 分钟
         
       </span>
     
@@ -267,12 +267,60 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">super-resolution</h1>
+            <h1 id="seo-header"></h1>
             
             
               <div class="markdown-body">
                 
-                
+                <h2 id="Windows下Rust环境安装"><a href="#Windows下Rust环境安装" class="headerlink" title="Windows下Rust环境安装"></a>Windows下Rust环境安装</h2><p>本文档的本意是不希望安装Visual Studio ，这个软件几个G的空间太大了…</p>
+<ul>
+<li>首先安装C&#x2F;C++ 环境，这里我们选择MinGW64，MinGW64（Minimalist GNU for Windows 64-bit）是一个在 Windows 操作系统上提供 GNU 工具集的开发环境。它旨在为 Windows 提供一套类Unix的开发工具，包括编译器、链接器、库和其他一些工具，使开发者能够在 Windows 平台上进行类Unix的软件开发。<ul>
+<li>在 <a target="_blank" rel="noopener" href="https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/">sourceforg</a>托管网站上往下翻，找到想要版本的下载，博主系统是win 10 64位机器，选择的是x86_64-win32-seh 以供参考</li>
+<li>解压到想要的目录下后，将下载路径的bin目录添加到环境变量即可，如D:\minGW-64\mingw64\bin</li>
+</ul>
+</li>
+<li>之后去<a target="_blank" rel="noopener" href="https://www.rust-lang.org/learn/get-started">Rust官网</a>下载Rustup，安装Rust即可</li>
+<li>再然后安装Rust，由于我们没有Visual Studio，因此选择2)，继续安装即可。</li>
+<li>安装完Rust，在编译时可能会发现错误，<code>error: linker link.exe not found</code>，这里我们首先先换源：<ul>
+<li>找到cargo的配置目录。Windows一般在C:\Users{用户名}.cargo，</li>
+<li>在目录下新建config文件，将下面内容保存为UTF8格式<ul>
+<li><pre><code class="txt"> [source.crates-io]
+ registry = &quot;https://github.com/rust-lang/crates.io-index&quot;
+ # 指定镜像
+ replace-with = &#39;tuna&#39;
+
+ # 清华大学
+ [source.tuna]
+ registry = &quot;https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git&quot;
+
+ # 中国科学技术大学
+ [source.ustc]
+ registry = &quot;git://mirrors.ustc.edu.cn/crates.io-index&quot;
+
+ # 上海交通大学
+ [source.sjtu]
+ registry = &quot;https://mirrors.sjtug.sjtu.edu.cn/git/crates.io-index&quot;
+
+ # rustcc社区
+ [source.rustcc]
+ registry = &quot;https://code.aliyun.com/rustcc/crates.io-index.git&quot;
+
+ # 字节跳动
+ [source.rsproxy]
+ registry = &quot;https://rsproxy.cn/crates.io-index&quot;
+</code></pre>
+</li>
+<li>然后在终端键入这两条命令即可<ul>
+<li><code>rustup toolchain install stable-x86_64-pc-windows-gnu</code></li>
+<li><code>rustup default stable-x86_64-pc-windows-gnu</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
                 
               </div>
             
@@ -289,8 +337,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>super-resolution</div>
-      <div>https://jiayongovo.github.io/2024/06/17/super-resolution/</div>
+      <div></div>
+      <div>https://jiayongovo.github.io/2024/06/17/windows rust 安装/</div>
     </div>
     <div class="license-meta">
       
@@ -334,15 +382,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/06/17/git%20usage/" title="">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile"></span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2024/06/17/verilog_with_vs/" title="">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>

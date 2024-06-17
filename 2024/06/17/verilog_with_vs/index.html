@@ -16,13 +16,15 @@
   <meta name="author" content="jiayong">
   <meta name="keywords" content="">
   
-    <meta name="description" content="jiayong的博客空间">
-<meta property="og:type" content="website">
+    <meta name="description" content="Vivado with Vscode目的:希望使用Vscode开发Verilog，优化编程体验  更换Vivado自带文本编辑器打开Vivado Tools&#x2F;Settings&#x2F;Text Editor&#x2F;Current Editor&#x2F;Custom Editor&#x2F;,修改Editor为[Vscode.exe path]-g [file name]:[lin">
+<meta property="og:type" content="article">
 <meta property="og:title" content="想用 Ai 实现一切我想做的事情 jiayongovo">
-<meta property="og:url" content="https://jiayongovo.github.io/index.html">
+<meta property="og:url" content="https://jiayongovo.github.io/2024/06/17/verilog_with_vs/index.html">
 <meta property="og:site_name" content="想用 Ai 实现一切我想做的事情 jiayongovo">
-<meta property="og:description" content="jiayong的博客空间">
+<meta property="og:description" content="Vivado with Vscode目的:希望使用Vscode开发Verilog，优化编程体验  更换Vivado自带文本编辑器打开Vivado Tools&#x2F;Settings&#x2F;Text Editor&#x2F;Current Editor&#x2F;Custom Editor&#x2F;,修改Editor为[Vscode.exe path]-g [file name]:[lin">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-06-17T08:53:37.525Z">
+<meta property="article:modified_time" content="2023-12-21T07:04:01.460Z">
 <meta property="article:author" content="jiayong">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -33,6 +35,12 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
 
@@ -82,7 +90,7 @@
   <header>
     
 
-<div class="header-inner" style="height: 100vh;">
+<div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -182,23 +190,59 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/bg/%E4%B9%96%E5%A5%B3%E5%84%BF.jfif') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="欢迎来到jiayong的博客空间"></span>
+            <span id="subtitle" data-typed-text=""></span>
           
         </div>
 
         
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-06-17 16:53" pubdate>
+          2024年6月17日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          167 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          2 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
       </div>
 
-      
-        <div class="scroll-down-bar">
-          <i class="iconfont icon-arrowdown"></i>
-        </div>
       
     </div>
   </div>
@@ -210,223 +254,174 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div id="board"
-          style="margin-top: 0">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header"></h1>
+            
+            
+              <div class="markdown-body">
                 
+                <h3 id="Vivado-with-Vscode"><a href="#Vivado-with-Vscode" class="headerlink" title="Vivado with Vscode"></a>Vivado with Vscode</h3><p>目的:希望使用Vscode开发Verilog，优化编程体验</p>
+<ul>
+<li>更换Vivado自带文本编辑器<br>打开Vivado Tools&#x2F;Settings&#x2F;Text Editor&#x2F;Current Editor&#x2F;Custom Editor&#x2F;,修改Editor为[Vscode.exe path]-g [file name]:[line number]</li>
+<li>Vscode安装Verilog拓展，支持语法高亮、自动补全、列出端口<br>在拓展商店中搜索 Verilog-HDL&#x2F;SystemVerilog</li>
+<li>实现自动语法纠错</li>
+</ul>
+<ol>
+<li>首先将Vivado&#x2F;bin目录放到环境变量中，Vscode可方便的调用xvlog(Vivado自带的语法纠错工具)</li>
+<li>之后找到上面下载的拓展设置，将Verilog的Linter设置为xvlog</li>
+</ol>
+<ul>
+<li>自动生成Testbench<br>在拓展上商店中搜索Verilog_Testbench插件，同时使用pip install chardet 命令，该插件需要该py包<br>优化:</li>
+</ul>
 
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/06/17/windows%20rust%20%E5%AE%89%E8%A3%85/" target="_self">
-          
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/17/windows%20rust%20%E5%AE%89%E8%A3%85/" target="_self">
-        <div>
-          Windows下Rust环境安装本文档的本意是不希望安装Visual Studio ，这个软件几个G的空间太大了…  首先安装C&#x2F;C++ 环境，这里我们选择MinGW64，MinGW64（Minimalist GNU for Windows 64-bit）是一个在 Windows 操作系统上提供 GNU 工具集的开发环境。它旨在为 Windows 提供一套类Unix的开发工具，包括编译器
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-06-17 16:53" pubdate>
-              2024-06-17
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/06/17/verilog_with_vs/" target="_self">
-          
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/17/verilog_with_vs/" target="_self">
-        <div>
-          Vivado with Vscode目的:希望使用Vscode开发Verilog，优化编程体验  更换Vivado自带文本编辑器打开Vivado Tools&#x2F;Settings&#x2F;Text Editor&#x2F;Current Editor&#x2F;Custom Editor&#x2F;,修改Editor为[Vscode.exe path]-g [file name]:[lin
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-06-17 16:53" pubdate>
-              2024-06-17
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/06/17/shell%E7%BC%96%E7%A8%8B/" target="_self">
-          
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/17/shell%E7%BC%96%E7%A8%8B/" target="_self">
-        <div>
-          shell编程目的: 在开发过程不可避免需要使用shell脚本完成工作，特此写一篇笔记用于学习和使用。参考文献_Shell脚本三十分钟入门 规范文件第一行为 #!/bin/bash，告诉系统这个脚本需要什么解释器执行运行方法：  chmod +x test.sh    ./test.sh /bin/sh test.sh 这种方式运行的脚本，不需要在第一行指定解释器  变量 定义变量定义变量时，变量
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-06-17 16:53" pubdate>
-              2024-06-17
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/06/17/gitignore/" target="_self">
-          
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/17/gitignore/" target="_self">
-        <div>
-          gitignore 文件目的：由于Rust编译后会有一大堆文件，但我不希望都上传到远程库中。这时候就可以使用.gitignore来忽略一些不需要提交的文件  空行或是以#开头的行即注释行将被忽略。 可以在前面添加正斜杠&#x2F;来避免递归,下面的例子中可以很明白的看出来与下一条的区别。 可以在后面添加正斜杠&#x2F;来忽略文件夹，例如build&#x2F;即忽略build文件夹。 可以使用!来
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-06-17 16:53" pubdate>
-              2024-06-17
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/06/17/git%20usage/" target="_self">
-          
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/17/git%20usage/" target="_self">
-        <div>
-          Git目的是只需要提交部分改动  git add          : 将要提交的部分代码提交到暂存区 git stash -u -k  : 保存未提交的修改 git status       : 查看状态 git commit -m “” : 提交暂存区的文件 git pull         : 拉取代码进行合并 git push         : 推送到远端仓库 git stash pop
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-06-17 16:53" pubdate>
-              2024-06-17
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/06/17/super-resolution/" target="_self">
-          super-resolution
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/17/super-resolution/" target="_self">
-        <div>
-          
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-06-17 15:55" pubdate>
-              2024-06-17
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-
-
-
-
+                
               </div>
-            </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>https://jiayongovo.github.io/2024/06/17/verilog_with_vs/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>jiayong</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年6月17日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
           </div>
         </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/06/17/windows%20rust%20%E5%AE%89%E8%A3%85/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/06/17/shell%E7%BC%96%E7%A8%8B/" title="">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
       </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
 
     
@@ -520,6 +515,99 @@
 
 
 
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
 
