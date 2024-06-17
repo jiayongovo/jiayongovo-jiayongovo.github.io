@@ -12,6 +12,12 @@
     
     
     
+    <tags>
+      
+      <tag>git</tag>
+      
+    </tags>
+    
   </entry>
   
   
@@ -24,6 +30,12 @@
     <content type="html"><![CDATA[<h1 id="gitignore-study"><a href="#gitignore-study" class="headerlink" title="gitignore study"></a>gitignore study</h1><p>目的：由于 Rust 编译后会有一大堆文件，但我不希望都上传到远程库中。这时候就可以使用.gitignore 来忽略一些不需要提交的文件</p><ul><li>空行或是以#开头的行即注释行将被忽略。</li><li>可以在前面添加正斜杠&#x2F;来避免递归,下面的例子中可以很明白的看出来与下一条的区别。</li><li>可以在后面添加正斜杠&#x2F;来忽略文件夹，例如 build&#x2F;即忽略 build 文件夹。</li><li>可以使用!来否定忽略，即比如在前面用了*.apk，然后使用!a.apk，则这个 a.apk 不会被忽略。</li><li><em>用来匹配零个或多个字符，如</em>.[oa]忽略所有以”.o”或”.a”结尾，*<del>忽略所有以</del>结尾的文件（这种文件通常被许多编辑器标记为临时文件）；[]用来匹配括号内的任一字符，如[abc]，也可以在括号内加连接符，如[0-9]匹配 0 至 9 的数；?用来匹配单个字符。</li></ul>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>git</tag>
+      
+    </tags>
     
   </entry>
   
@@ -38,6 +50,14 @@
     
     
     
+    <tags>
+      
+      <tag>windows</tag>
+      
+      <tag>rust</tag>
+      
+    </tags>
+    
   </entry>
   
   
@@ -50,6 +70,12 @@
     <content type="html"><![CDATA[]]></content>
     
     
+    
+    <tags>
+      
+      <tag>SISR</tag>
+      
+    </tags>
     
   </entry>
   
