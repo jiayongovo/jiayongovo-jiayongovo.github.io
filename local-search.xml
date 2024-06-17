@@ -3,5 +3,57 @@
   
   
   
+  <entry>
+    <title>git-usage</title>
+    <link href="/2024/06/17/git-usage/"/>
+    <url>/2024/06/17/git-usage/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><p>目的是只需要提交部分改动</p><ol><li>git add : 将要提交的部分代码提交到暂存区</li><li>git stash -u -k : 保存未提交的修改</li><li>git status : 查看状态</li><li>git commit -m “” : 提交暂存区的文件</li><li>git pull : 拉取代码进行合并</li><li>git push : 推送到远端仓库</li><li>git stash pop : 恢复第 2 步保存到未提交的修改</li></ol>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>gitignore-study</title>
+    <link href="/2024/06/17/gitignore-study/"/>
+    <url>/2024/06/17/gitignore-study/</url>
+    
+    <content type="html"><![CDATA[<h1 id="gitignore-study"><a href="#gitignore-study" class="headerlink" title="gitignore study"></a>gitignore study</h1><p>目的：由于 Rust 编译后会有一大堆文件，但我不希望都上传到远程库中。这时候就可以使用.gitignore 来忽略一些不需要提交的文件</p><ul><li>空行或是以#开头的行即注释行将被忽略。</li><li>可以在前面添加正斜杠&#x2F;来避免递归,下面的例子中可以很明白的看出来与下一条的区别。</li><li>可以在后面添加正斜杠&#x2F;来忽略文件夹，例如 build&#x2F;即忽略 build 文件夹。</li><li>可以使用!来否定忽略，即比如在前面用了*.apk，然后使用!a.apk，则这个 a.apk 不会被忽略。</li><li><em>用来匹配零个或多个字符，如</em>.[oa]忽略所有以”.o”或”.a”结尾，*<del>忽略所有以</del>结尾的文件（这种文件通常被许多编辑器标记为临时文件）；[]用来匹配括号内的任一字符，如[abc]，也可以在括号内加连接符，如[0-9]匹配 0 至 9 的数；?用来匹配单个字符。</li></ul>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Windows下Rust环境安装</title>
+    <link href="/2024/06/17/Windows%E4%B8%8BRust%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/"/>
+    <url>/2024/06/17/Windows%E4%B8%8BRust%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Windows-下-Rust-环境安装"><a href="#Windows-下-Rust-环境安装" class="headerlink" title="Windows 下 Rust 环境安装"></a>Windows 下 Rust 环境安装</h2><p>本文档的本意是不希望安装 Visual Studio ，这个软件几个 G 的空间太大了…</p><ul><li><p>首先安装 C&#x2F;C++ 环境，这里我们选择 MinGW64，MinGW64（Minimalist GNU for Windows 64-bit）是一个在 Windows 操作系统上提供 GNU 工具集的开发环境。它旨在为 Windows 提供一套类 Unix 的开发工具，包括编译器、链接器、库和其他一些工具，使开发者能够在 Windows 平台上进行类 Unix 的软件开发。</p><ul><li>在 <a href="https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/">sourceforg</a>托管网站上往下翻，找到想要版本的下载，博主系统是 win 10 64 位机器，选择的是 x86_64-win32-seh 以供参考</li><li>解压到想要的目录下后，将下载路径的 bin 目录添加到环境变量即可，如 D:\minGW-64\mingw64\bin</li></ul></li><li><p>之后去<a href="https://www.rust-lang.org/learn/get-started">Rust 官网</a>下载 Rustup，安装 Rust 即可</p></li><li><p>再然后安装 Rust，由于我们没有 Visual Studio，因此选择 2)，继续安装即可。</p></li><li><p>安装完 Rust，在编译时可能会发现错误，<code>error: linker link.exe not found</code>，这里我们首先先换源：</p><ul><li><p>找到 cargo 的配置目录。Windows 一般在 C:\Users{用户名}.cargo，</p></li><li><p>在目录下新建 config 文件，将下面内容保存为 UTF8 格式</p><ul><li><pre><code class="txt"> [source.crates-io] registry = &quot;https://github.com/rust-lang/crates.io-index&quot; # 指定镜像 replace-with = &#39;tuna&#39; # 清华大学 [source.tuna] registry = &quot;https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git&quot; # 中国科学技术大学 [source.ustc] registry = &quot;git://mirrors.ustc.edu.cn/crates.io-index&quot; # 上海交通大学 [source.sjtu] registry = &quot;https://mirrors.sjtug.sjtu.edu.cn/git/crates.io-index&quot; # rustcc社区 [source.rustcc] registry = &quot;https://code.aliyun.com/rustcc/crates.io-index.git&quot; # 字节跳动 [source.rsproxy] registry = &quot;https://rsproxy.cn/crates.io-index&quot;</code></pre></li><li><p>然后在终端键入这两条命令即可</p><ul><li><code>rustup toolchain install stable-x86_64-pc-windows-gnu</code></li><li><code>rustup default stable-x86_64-pc-windows-gnu</code></li></ul></li></ul></li></ul></li></ul>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>super-resolution</title>
+    <link href="/2024/06/17/super-resolution/"/>
+    <url>/2024/06/17/super-resolution/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
   
 </search>
